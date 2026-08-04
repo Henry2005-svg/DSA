@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TARUMTHousekeeping" default="run" basedir=".">
+    <property name="src.dir" value="src"/>
+    <property name="test.dir" value="test"/>
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="test.classes.dir" value="${build.dir}/test/classes"/>
+    <property name="main.class" value="client.ResortManagementApplication"/>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}"
+               includeantruntime="false" encoding="UTF-8" source="8" target="8"/>
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="${main.class}" fork="true" classpath="${classes.dir}"/>
+    </target>
+
+    <target name="test" depends="compile">
+        <mkdir dir="${test.classes.dir}"/>
+        <javac srcdir="${test.dir}" destdir="${test.classes.dir}"
+               includeantruntime="false" encoding="UTF-8" source="8" target="8">
+            <classpath path="${classes.dir}"/>
+        </javac>
+        <echo message="Compilation test completed successfully."/>
+    </target>
+</project>
