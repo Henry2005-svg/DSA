@@ -1,6 +1,0 @@
-# taskId|roomNumber|staffId|staffName|description|status|completed|active|cancelled
-T001|102|HK002|Mei Ling|Clean guest room|DIRTY|false|true|false
-T002|201|HK001|Ahmad Firdaus|Inspect room|CLEANING_IN_PROGRESS|false|true|false
-T003|202|HK003|Siti Aisyah|Final preparation|READY_FOR_CHECK_IN|true|false|false
-T004|302|HK003|Siti Aisyah|clean|CLEANING_IN_PROGRESS|false|false|true
-T008|202|HK004|John Tan|clean and change the pillow|READY_FOR_CHECK_IN|true|false|false
