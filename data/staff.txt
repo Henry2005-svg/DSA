@@ -1,5 +1,0 @@
-# staffId|staffName|available
-HK001|Ahmad Firdaus|false
-HK002|Mei Ling|false
-HK003|Siti Aisyah|true
-HK004|John Tan|true

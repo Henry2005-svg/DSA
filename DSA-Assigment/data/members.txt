@@ -1,6 +1,0 @@
-# memberId|guestName|totalSpent|pointsBalance|totalPointsEarned|totalPointsRedeemed|expiredPoints|pointsExpiryDate
-M1001|Tan Jia Min|8200.0|5200|9000|3800|0|2026-12-31
-M1002|Lim Wei Sheng|15400.0|7300|16000|8700|0|2026-09-30
-M1003|Nur Aisyah|28100.0|18800|29000|10200|0|2027-01-31
-M1004|Kavitha Rao|4100.0|900|4200|3300|0|2026-07-31
-M1005|Ong Jun Kit|33650.0|21600|35000|13400|0|2026-11-30
