@@ -29,11 +29,19 @@ public class HousekeepingManager {
     private String lastMessage = "";
     private boolean persistenceEnabled;
 
-    private static final String DATA_FOLDER = "data";
+    private static final String DATA_FOLDER = resolveDataFolder();
     private static final String ROOM_FILE = DATA_FOLDER + File.separator + "rooms.txt";
     private static final String STAFF_FILE = DATA_FOLDER + File.separator + "staff.txt";
     private static final String TASK_FILE = DATA_FOLDER + File.separator + "tasks.txt";
     private static final String HISTORY_FILE = DATA_FOLDER + File.separator + "status_history.txt";
+
+    private static String resolveDataFolder() {
+        File projectDataFolder = new File("DSA-Assigment" + File.separator + "data");
+        if (projectDataFolder.exists()) {
+            return projectDataFolder.getPath();
+        }
+        return "data";
+    }
 
     public void initializeData() {
         File roomFile = new File(ROOM_FILE);
