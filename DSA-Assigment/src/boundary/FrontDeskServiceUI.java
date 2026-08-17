@@ -2,20 +2,26 @@
 package boundary;
 
 import control.FrontDeskServiceManager;
+import control.HousekeepingManager;
 import entity.Booking;
+import entity.Room;
+import entity.RoomStatus;
 import java.util.Scanner;
 
 public class FrontDeskServiceUI {
 
     private final Scanner scanner;
     private final FrontDeskServiceManager manager;
+    private final HousekeepingManager housekeepingManager;
 
     public FrontDeskServiceUI(
             Scanner scanner,
-            FrontDeskServiceManager manager) {
+            FrontDeskServiceManager manager,
+            HousekeepingManager housekeepingManager) {
 
         this.scanner = scanner;
         this.manager = manager;
+        this.housekeepingManager = housekeepingManager;
     }
 
     public void displayMenu() {
@@ -29,6 +35,7 @@ public class FrontDeskServiceUI {
             line('=');
 
             System.out.println("1. Search Guest by Confirmation Number");
+            System.out.println("2. Check Room Availability");
             System.out.println("0. Return to Main Menu");
 
             line('-');
@@ -40,6 +47,10 @@ public class FrontDeskServiceUI {
 
                 case "1":
                     searchGuest();
+                    break;
+
+                case "2":
+                    checkRoomAvailabilty();
                     break;
 
                 case "0":
@@ -115,6 +126,54 @@ public class FrontDeskServiceUI {
         System.out.println(
                 "Status            : "
                 + booking.getStatus());
+
+        line('-');
+    }
+
+    public void checkRoomAvailabilty() {
+
+        System.out.println("\nRoom Availability");
+
+        // Get the room data from HouseKeeping 
+        Room[] rooms = housekeepingManager.getRoomsSortedByNumber();
+
+        boolean roomAvailable = false;
+
+        line('-');
+
+        System.out.printf(
+            "%-12s %-15s %-20s%n",
+            "Room No.",
+                    "Room Type",
+                    "Status"
+        );
+
+        line('-');
+
+        // Check every room 
+        for (int i = 0; i < rooms.length; i++) {
+
+            // Only show rooms that are ready for check-in
+            if (rooms[i].getStatus()
+                    == RoomStatus.READY_FOR_CHECK_IN) {
+                
+                System.out.printf(
+                        "%-12s %-15s %-20s%n",
+                            rooms[i].getRoomNumber(),
+                            rooms[i].getRoomType(),
+                            rooms[i].getStatus()
+                );
+
+                roomAvailable = true;
+            }
+        }
+
+        // No available room 
+        if (!roomAvailable) {
+            System.out.println(
+                    "No rooms are currently ready for check-in."
+            );
+        }
 
         line('-');
     }

@@ -28,9 +28,9 @@ public class ResortManagementApplication {
         manager.initializeData();
 
         HousekeepingReportManager reportManager = 
-                new HousekeepingReportManager(manager);
+                        new HousekeepingReportManager(manager);
 
-        HousekeepingUI housekeepingUI = 
+                HousekeepingUI housekeepingUI = 
                 new HousekeepingUI(
                         scanner, 
                         manager, 
@@ -42,7 +42,7 @@ public class ResortManagementApplication {
                     new WalkInRegistrationUI(scanner),
                     new FrontDeskServiceUI(
                             scanner, 
-                            frontDeskManager), 
+                            frontDeskManager,manager), 
                         housekeepingUI);
                         
         mainMenu.displayMenu();
